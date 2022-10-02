@@ -1,5 +1,5 @@
 # fluid-dynamics
-C++ project from my Ba in physics, does some typical fluid dynamic simulations
+C++ project from my Ba in physics, does some typical fluid dynamic simulations like in the examples below
 
 
 ![vel_im1](https://user-images.githubusercontent.com/94530834/193464860-2a92b929-a8c1-475b-b724-5d06eb987ec7.png)
