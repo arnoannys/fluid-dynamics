@@ -21,18 +21,7 @@ def plot_3():
 	x = np.multiply(x,2./(len(x)-1))
 	y  = np.multiply(y,2./(len(x)-1))
 	
-	'''
-	in wat volgt worden vaak matrices omgedraait via flipud om te compenseren voor het verschil in 
-	conventie bij matrices en de plot, in de maskers en de matrices bevind bv de band zich bovenaan maar 
-	een contour draait dit om, dit wordt gecompenseert door het flippen van de matrices. het gevolg is
-	dat hierbij de quiver verstoort wordt en met een extra minteken voor v gecompenseert moet worden :(
-	normaal, en in matlab, kan dit opgelost worden met gca Yaxis reverse maar dit werkt niet in deze python code
-	de plots werden ter controle in matlab gemaakt en daar werkt het wel zoals gewenst wat aantoont dat de nood
-	voor het minteken in de quiver niet aan de berekening ligt. om dit nog te bewijzen wordt helemaal onderaan 
-	1 plot gemaakt die wel ondersteboven blijft, waarop geen vreemde extra manipulaties zijn gedaan om aan te tonen
-	dat de berekening wel ok is.
-	'''
-
+	
 	plt.figure()
 	plt.contourf(x,y,np.flipud(p), 100,cmap = 'jet' )
 	plt.colorbar()
@@ -107,23 +96,3 @@ v_profile(30)
 count1 = count1 + 4
 count2 = count2 + 1
 
-
-############## upside down plot als proof ######################
-p = np.genfromtxt("py-data0.csv" , delimiter = "," )
-u = np.genfromtxt("py-data1.csv" , delimiter = "," )
-v = np.genfromtxt("py-data2.csv" , delimiter = "," )
-x = np.genfromtxt("x0.csv" , delimiter = "," )
-y = np.genfromtxt("y0.csv" , delimiter = "," )
-p = np.where(p ==  0.000042 , np.nan , p) 
-x = np.multiply(x,2./(len(x)-1))
-y  = np.multiply(y,2./(len(x)-1))
-plt.figure()
-plt.contourf(x,y,p, 100,cmap = 'jet' )
-plt.colorbar()
-plt.quiver(x ,y , u ,v)
-plt.title('plot om aan te tonen dat de manipulaties voor het omdraaien ok zijn')
-plt.xlabel('x')
-plt.ylabel('y')
-plt.xlim(0,2)
-plt.ylim(0,2)
-plt.savefig('upside_down_proof.png')
